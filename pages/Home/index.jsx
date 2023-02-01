@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { Grid } from "@mui/material";
+import ContactUs from "@/components/ContactUs";
 
 const styles = makeStyles((theme) => ({
   desktopViewMainBanner: {
@@ -135,14 +136,20 @@ const styles = makeStyles((theme) => ({
     fontSize: "42px",
     color: "white",
     lineHeight: "72px",
-    [theme.breakpoints.down("1500")]: {
+    [theme.breakpoints.down("1600")]: {
       fontSize: "36px",
+    },
+    [theme.breakpoints.down("1500")]: {
+      fontSize: "30px",
     },
     [theme.breakpoints.down("1250")]: {
       fontSize: "28px",
     },
-    [theme.breakpoints.down("960")]: {
+    [theme.breakpoints.down("1060")]: {
       fontSize: "24px",
+    },
+    [theme.breakpoints.down("960")]: {
+      fontSize: "22px",
     },
     [theme.breakpoints.down("900")]: {
       fontSize: "36px",
@@ -181,6 +188,18 @@ const styles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("350")]: {
       fontSize: "12px",
+    },
+  },
+  gridItemDiv: {
+    marginLeft: "30px",
+    [theme.breakpoints.down("1160")]: {
+      marginLeft: "0px",
+    },
+    [theme.breakpoints.down("1060")]: {
+      marginLeft: "0px",
+    },
+    [theme.breakpoints.down("740")]: {
+      marginLeft: "0px",
     },
   },
   yellowDullImageDiv: {
@@ -292,7 +311,7 @@ const LandingPage = () => {
               key={index}
               className={classes.thirdSectionGridItem}
             >
-              <div>
+              <div className={classes.gridItemDiv}>
                 <p className={classes.thirdSectionHeadings}>{item.heading}</p>
                 <p className={classes.thirdSectionText}>{item.text}</p>
                 <div className={classes.yellowDullImageDiv}>
@@ -307,6 +326,14 @@ const LandingPage = () => {
           ))}
         </Grid>
       </div>
+
+      <div className={classes.forthSection}>
+        <p>TECHNOLOGY WE UTILIZE</p>
+        {/* insert slider here */}
+      </div>
+
+      {/* Contact Us Section */}
+      <ContactUs />
     </>
   );
 };

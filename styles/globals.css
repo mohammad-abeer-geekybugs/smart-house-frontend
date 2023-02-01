@@ -109,3 +109,9 @@ a {
 .navText:hover {
   color: #f4cf09 !important;
 }
+.css-1te5oja-MuiInputBase-root-MuiFilledInput-root:after {
+  border-bottom: 2px solid #f4cf09 !important;
+}
+.css-1te5oja-MuiInputBase-root-MuiFilledInput-root:before {
+  border-bottom: none !important;
+}
