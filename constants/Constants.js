@@ -1,3 +1,7 @@
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+
 export const NAVLINKS = [
   {
     name: "Entertainment",
@@ -16,7 +20,20 @@ export const NAVLINKS = [
     path: "/",
   },
 ];
-
+export const MOBILE_MENU_BOT_TEXT = [
+  {
+    icon: <LocalPhoneOutlinedIcon />,
+    text: "647-693-5688",
+  },
+  {
+    icon: <AlternateEmailOutlinedIcon />,
+    text: "info@housesmarts.io",
+  },
+  {
+    icon: <LocationOnOutlinedIcon />,
+    text: "Serving Southern Ontario",
+  },
+];
 export const TESTINOMIALS = [
   {
     name: "Alexis Rankins",

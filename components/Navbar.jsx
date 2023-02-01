@@ -13,13 +13,13 @@ import MailIcon from "@mui/icons-material/Mail";
 import ClearIcon from "@mui/icons-material/Clear";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
-import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+// import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+// import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
+// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import Link from "next/link";
 import clsx from "clsx";
 import { Divider } from "@mui/material";
-import { NAVLINKS } from "@/constants/Constants";
+import { MOBILE_MENU_BOT_TEXT, NAVLINKS } from "@/constants/Constants";
 
 const styles = makeStyles((theme) => ({
   navBarContainer: {
@@ -69,20 +69,20 @@ const styles = makeStyles((theme) => ({
     },
   },
 }));
-const MOBILE_MENU_BOT_TEXT = [
-  {
-    icon: <LocalPhoneOutlinedIcon />,
-    text: "647-693-5688",
-  },
-  {
-    icon: <AlternateEmailOutlinedIcon />,
-    text: "info@housesmarts.io",
-  },
-  {
-    icon: <LocationOnOutlinedIcon />,
-    text: "Serving Southern Ontario",
-  },
-];
+// const MOBILE_MENU_BOT_TEXT = [
+//   {
+//     icon: <LocalPhoneOutlinedIcon />,
+//     text: "647-693-5688",
+//   },
+//   {
+//     icon: <AlternateEmailOutlinedIcon />,
+//     text: "info@housesmarts.io",
+//   },
+//   {
+//     icon: <LocationOnOutlinedIcon />,
+//     text: "Serving Southern Ontario",
+//   },
+// ];
 const Navbar = () => {
   const [offset, setOffset] = useState(0);
   const classes = styles();
@@ -177,10 +177,7 @@ const Navbar = () => {
     </Box>
   );
   const navBarBgImage = {
-    backgroundImage: "url()",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    transition: "background-image 3s ease-in-out",
+    backgroundColor: "black",
   };
 
   useEffect(() => {
@@ -234,7 +231,7 @@ const Navbar = () => {
       {/* Desktop View Menu */}
       <div
         className={classes.desktopMenu}
-        style={offset > 150 ? navBarBgImage : null}
+        style={offset > 70 ? navBarBgImage : null}
       >
         <div
           style={{
