@@ -8,14 +8,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import ClearIcon from "@mui/icons-material/Clear";
-import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
-// import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-// import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
-// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import Link from "next/link";
 import clsx from "clsx";
 import { Divider } from "@mui/material";
@@ -69,29 +63,20 @@ const styles = makeStyles((theme) => ({
     },
   },
 }));
-// const MOBILE_MENU_BOT_TEXT = [
-//   {
-//     icon: <LocalPhoneOutlinedIcon />,
-//     text: "647-693-5688",
-//   },
-//   {
-//     icon: <AlternateEmailOutlinedIcon />,
-//     text: "info@housesmarts.io",
-//   },
-//   {
-//     icon: <LocationOnOutlinedIcon />,
-//     text: "Serving Southern Ontario",
-//   },
-// ];
+
 const Navbar = () => {
-  const [offset, setOffset] = useState(0);
   const classes = styles();
+  const [offset, setOffset] = useState(0);
+  const [widthOffset, setWidthoffset] = useState(0);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
-  // console.log("offset: ", offset);
+
+  useEffect(() => {
+    setWidthoffset(screen.width);
+  });
 
   const mobileList = () => (
     <Box
-      sx={{ width: 330 }}
+      sx={{ width: widthOffset }}
       role="presentation"
       style={{
         backgroundColor: "black",
@@ -102,13 +87,10 @@ const Navbar = () => {
     >
       <List>
         <ListItem>
-          <ListItemIcon style={{ marginLeft: "20px" }}>
-            <Image
-              src={"/smallLogo.svg"}
-              width="40px"
-              height="40px"
-              //   style={{ marginLeft: "20px" }}
-            />
+          <ListItemIcon style={{ marginLeft: "20px", cursor: "pointer" }}>
+            <Link href="/">
+              <Image src={"/smallLogo.svg"} width="40px" height="40px" />
+            </Link>
           </ListItemIcon>
           <ListItemButton style={{ justifyContent: "right" }}>
             <ListItemIcon style={{ justifyContent: "inherit" }}>
@@ -133,7 +115,11 @@ const Navbar = () => {
                 </ListItemButton>
               </Link>
             </ListItem>
-            <Divider color="yellow" width="20%" style={{ marginLeft: "13%" }} />
+            <Divider
+              color="yellow"
+              width="20%"
+              style={{ position: "absolute", left: "45px" }}
+            />
           </React.Fragment>
         ))}
         <div style={{ marginTop: "80px" }}>
@@ -241,22 +227,25 @@ const Navbar = () => {
           }}
         >
           <div style={{ flex: 1, display: "flex", marginLeft: "10%" }}>
-            <div
-              style={{
-                width: "max-content",
-                alignSelf: "center",
-                marginRight: "20px",
-              }}
-            >
-              <Image
-                src={"/mainLogo.svg"}
-                width="108px"
-                height="36px"
+            <Link href="/">
+              <div
                 style={{
-                  marginTop: "10px",
+                  width: "max-content",
+                  alignSelf: "center",
+                  marginRight: "20px",
+                  cursor: "pointer",
                 }}
-              />
-            </div>
+              >
+                <Image
+                  src={"/mainLogo.svg"}
+                  width="108px"
+                  height="36px"
+                  style={{
+                    marginTop: "10px",
+                  }}
+                />
+              </div>
+            </Link>
             {desktopList()}
           </div>
           <div style={{ flex: 1, alignSelf: "center" }}>

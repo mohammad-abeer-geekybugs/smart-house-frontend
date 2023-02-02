@@ -328,7 +328,7 @@ const LandingPage = () => {
       </div>
 
       <div className={classes.forthSection}>
-        <p>TECHNOLOGY WE UTILIZE</p>
+        {/* <p>TECHNOLOGY WE UTILIZE</p> */}
         {/* insert slider here */}
       </div>
 

@@ -15,7 +15,6 @@ const styles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     padding: "10% 0px",
-    marginBottom: "50vh",
     [theme.breakpoints.up("525")]: {
       backgroundImage: "url(/contactUsBg.png)",
     },
