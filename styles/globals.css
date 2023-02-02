@@ -115,3 +115,9 @@ a {
 .css-1te5oja-MuiInputBase-root-MuiFilledInput-root:before {
   border-bottom: none !important;
 }
+.css-1en19g0:before {
+  border-bottom: none !important;
+}
+.css-1en19g0:after {
+  border-bottom: 2px solid #f4cf09 !important;
+}
