@@ -190,7 +190,11 @@ const LeftToRightAmenity = ({ DATA, modifyGrid, callShield }) => {
                   Click{" "}
                   <Link href="/contact-us">
                     <span
-                      style={{ color: "#f4cf09", textDecoration: "underline" }}
+                      style={{
+                        color: "#f4cf09",
+                        textDecoration: "underline",
+                        cursor: "pointer",
+                      }}
                     >
                       here
                     </span>

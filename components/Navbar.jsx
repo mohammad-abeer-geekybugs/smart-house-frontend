@@ -122,11 +122,13 @@ const Navbar = () => {
             <ListItem disablePadding>
               <Link href={item.path}>
                 <ListItemButton>
-                  <ListItemText
-                    className={clsx(classes.menuLinks, "navText")}
-                    // primary={item.name}
-                  >
-                    <p className={classes.menuLinksText}>{item.name}</p>
+                  <ListItemText className={clsx(classes.menuLinks, "navText")}>
+                    <p
+                      className={classes.menuLinksText}
+                      onClick={() => setOpenMobileMenu(false)}
+                    >
+                      {item.name}
+                    </p>
                   </ListItemText>
                 </ListItemButton>
               </Link>
@@ -140,7 +142,7 @@ const Navbar = () => {
         ))}
       </List>
       <div
-        style={{ /* marginTop: "80px" */ position: "absolute", bottom: "50px" }}
+        style={{ /* marginTop: "80px" */ position: "absolute", bottom: "90px" }}
       >
         {MOBILE_MENU_BOT_TEXT.map((item, index) => (
           <ListItem key={index}>

@@ -177,7 +177,7 @@ const Footer = () => {
                 <span className={classes.hoursOfWorkListItemsTitle}>
                   {item.title}
                 </span>
-                <span style={{ flex: "1" }}>{item.value}</span>
+                <span style={{ flex: "1", color: "#fff" }}>{item.value}</span>
               </ListItem>
             ))}
           </List>
@@ -192,16 +192,25 @@ const Footer = () => {
             }}
           >
             <ListItem className={classes.contacts}>Contacts:</ListItem>
-            {MOBILE_MENU_BOT_TEXT.map((item, index) => (
-              <ListItem
-                key={index}
-                disablePadding
-                className={classes.contactsListItems}
-              >
-                <span className={classes.contactsLogo}>{item.icon}</span>
-                <span>{item.text}</span>
-              </ListItem>
-            ))}
+            <div
+              style={{
+                textAlign: "start",
+                maxWidth: "85%",
+                margin: "auto",
+                color: "#fff",
+              }}
+            >
+              {MOBILE_MENU_BOT_TEXT.map((item, index) => (
+                <ListItem
+                  key={index}
+                  disablePadding
+                  className={classes.contactsListItems}
+                >
+                  <span className={classes.contactsLogo}>{item.icon}</span>
+                  <span>{item.text}</span>
+                </ListItem>
+              ))}
+            </div>
           </List>
         </Grid>
       </Grid>
