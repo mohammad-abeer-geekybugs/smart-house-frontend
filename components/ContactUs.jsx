@@ -170,8 +170,8 @@ const validateForm = Yup.object().shape({
   phoneNumber: Yup.string().max(11, "Too Long!").required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
 });
-
-const ContactUs = () => {
+const topMargin = { marginTop: "50px" };
+const ContactUs = ({ contactUsPage }) => {
   const classes = styles();
   const [initialValues] = useState({
     userName: "",
@@ -183,7 +183,11 @@ const ContactUs = () => {
   };
   return (
     <div className={classes.container}>
-      <Grid container className={classes.gridContainer}>
+      <Grid
+        container
+        className={classes.gridContainer}
+        style={!!contactUsPage ? topMargin : null}
+      >
         <Grid item xs={0} sm={0} md={6} lg={6} className={classes.emptyGrid} />
 
         {/* Form grid */}

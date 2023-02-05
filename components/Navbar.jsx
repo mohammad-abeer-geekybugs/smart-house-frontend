@@ -14,6 +14,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { Divider } from "@mui/material";
 import { MOBILE_MENU_BOT_TEXT, NAVLINKS } from "@/constants/Constants";
+import { useRouter } from "next/router";
 
 const styles = makeStyles((theme) => ({
   navBarContainer: {
@@ -50,33 +51,48 @@ const styles = makeStyles((theme) => ({
   },
   navButton: {
     color: "white",
-    borderColor: "#fff",
+    border: "2px solid #fff",
     borderRadius: "0px",
     float: "right",
     marginRight: "20%",
     "&:hover": {
       fontWeight: "600",
+      border: "2px solid #F4CF09",
       color: "#F4CF09",
-      borderColor: "#F4CF09",
+      cursor: "pointer",
       transform: "translate(0px, -5px)",
       transition: "transform 0.5s ease-in-out",
     },
   },
+  navLinkItemDiv: {
+    padding: "20px 0px 10px",
+    margin: "0px 20px",
+    color: "White",
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
 }));
-
+const activeLink = {
+  borderBottom: "2px solid #F4CF09",
+};
 const Navbar = () => {
   const classes = styles();
+  const route = useRouter();
   const [offset, setOffset] = useState(0);
   const [widthOffset, setWidthoffset] = useState(0);
+  const [heightOffset, setHeightOffset] = useState(0);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   useEffect(() => {
     setWidthoffset(screen.width);
+    setHeightOffset(screen.height);
   });
-
+  console.log("seightOffset: ", heightOffset);
   const mobileList = () => (
     <Box
       sx={{ width: widthOffset }}
+      minHeight={heightOffset}
       role="presentation"
       style={{
         backgroundColor: "black",
@@ -110,7 +126,7 @@ const Navbar = () => {
                     className={clsx(classes.menuLinks, "navText")}
                     // primary={item.name}
                   >
-                    <p className={clsx(classes.menuLinksText)}>{item.name}</p>
+                    <p className={classes.menuLinksText}>{item.name}</p>
                   </ListItemText>
                 </ListItemButton>
               </Link>
@@ -122,21 +138,21 @@ const Navbar = () => {
             />
           </React.Fragment>
         ))}
-        <div style={{ marginTop: "80px" }}>
-          {MOBILE_MENU_BOT_TEXT.map((item, index) => (
-            <ListItem key={index}>
-              <ListItemText>
-                <div
-                  style={{ display: "flex", gap: "10px", marginLeft: "20px" }}
-                >
-                  {item.icon}
-                  {item.text}
-                </div>
-              </ListItemText>
-            </ListItem>
-          ))}
-        </div>
       </List>
+      <div
+        style={{ /* marginTop: "80px" */ position: "absolute", bottom: "50px" }}
+      >
+        {MOBILE_MENU_BOT_TEXT.map((item, index) => (
+          <ListItem key={index}>
+            <ListItemText>
+              <div style={{ display: "flex", gap: "10px", marginLeft: "20px" }}>
+                {item.icon}
+                {item.text}
+              </div>
+            </ListItemText>
+          </ListItem>
+        ))}
+      </div>
     </Box>
   );
   const desktopList = () => (
@@ -151,12 +167,12 @@ const Navbar = () => {
     >
       {NAVLINKS.map((item, index) => (
         <div
-          className={clsx(classes.navText, "navText")}
-          style={{ margin: "20px 20px", color: "White" }}
+          className={clsx(classes.navText, classes.navLinkItemDiv, "navText")}
+          style={route.pathname === item.path ? activeLink : null}
           key={index}
         >
-          <Link className={classes.linkHover} href={item.path}>
-            {item.name}
+          <Link href={item.path}>
+            <span>{item.name}</span>
           </Link>
         </div>
       ))}
@@ -186,14 +202,16 @@ const Navbar = () => {
             padding: "10px 35px",
           }}
         >
-          <Image
-            src={"/smallLogo.svg"}
-            width="40px"
-            height="30px"
-            style={{
-              marginTop: "10px",
-            }}
-          />
+          <Link href="/">
+            <Image
+              src={"/smallLogo.svg"}
+              width="40px"
+              height="30px"
+              style={{
+                marginTop: "10px",
+              }}
+            />
+          </Link>
         </div>
         <div style={{ alignSelf: "center", padding: "10px 10px" }}>
           <Button
@@ -249,9 +267,11 @@ const Navbar = () => {
             {desktopList()}
           </div>
           <div style={{ flex: 1, alignSelf: "center" }}>
-            <Button variant="outlined" className={classes.navButton}>
-              Contact Us
-            </Button>
+            <Link href="/contact-us">
+              <Button variant="outlined" className={classes.navButton}>
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

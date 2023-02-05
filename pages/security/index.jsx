@@ -4,27 +4,27 @@ import React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RightToLeftAmenity from "@/components/RightToLeftAmenity";
 import {
-  BASIC_HOME_THEATRE,
-  CUSTOM_HOME_THEATRE,
-  CUSTOM_SPORTS_DEN,
-  GAMING_ROOM,
+  ACCESS_CONTROL_AND_DOOR_LOCKS,
+  CALLSHIELD,
+  MONITORING,
+  WATER_LEAK_PROTECTION,
 } from "@/constants/Constants";
 import LeftToRightAmenity from "@/components/LeftToRightAmenity";
 import ContactUs from "@/components/ContactUs";
 const styles = makeStyles((theme) => ({
   container: {
-    backgroundImage: "url(/entertainmentBg.png)",
+    backgroundImage: "url(/securityBg.png)",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundColor: "black",
     [theme.breakpoints.down("md")]: {
       minHeight: "56vh",
-      backgroundImage: "url(/entertainmentTabletBg.png)",
+      backgroundImage: "url(/securityTabletBg.png)",
     },
     [theme.breakpoints.down("sm")]: {
       minHeight: "45vh",
-      backgroundImage: "url(/entertainmentMobileBg.png)",
+      backgroundImage: "url(/securityMobileBg.png)",
     },
   },
   mainBanner: {
@@ -53,6 +53,7 @@ const styles = makeStyles((theme) => ({
     color: "white",
     fontSize: "20px",
     lineHeight: "24px",
+    maxWidth: "500px",
     [theme.breakpoints.down("md")]: {
       fontSize: "14px",
       lineHeight: "20px",
@@ -94,15 +95,16 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const Entertainment = () => {
+const Security = () => {
   const classes = styles();
   return (
     <>
       <div className={classes.container}>
         <div className={classes.mainBanner}>
-          <p className={classes.mainHeading}>01. ENTERTAINMENT</p>
+          <p className={classes.mainHeading}>03. SECURITY</p>
           <p className={classes.subHeading}>
-            Experience personalized, high-quality entertainment in your home
+            Experience the ultimate in home security and convenience with House
+            Smarts advanced wireless technology solutions.
           </p>
           <div className={classes.mainBannerYellowLineDiv}>
             <Image src="/yellowDullLine.png" width="400px" height="50px" />
@@ -113,10 +115,13 @@ const Entertainment = () => {
         </div>
       </div>
       <div>
-        <RightToLeftAmenity DATA={BASIC_HOME_THEATRE} />
-        <LeftToRightAmenity DATA={CUSTOM_HOME_THEATRE} />
-        <RightToLeftAmenity DATA={CUSTOM_SPORTS_DEN} />
-        <LeftToRightAmenity DATA={GAMING_ROOM} />
+        <RightToLeftAmenity
+          DATA={ACCESS_CONTROL_AND_DOOR_LOCKS}
+          modifyGrid={true}
+        />
+        <LeftToRightAmenity DATA={MONITORING} modifyGrid={true} />
+        <RightToLeftAmenity DATA={WATER_LEAK_PROTECTION} modifyGrid={true} />
+        <LeftToRightAmenity DATA={CALLSHIELD} callShield={true} />
       </div>
       <div className={classes.contactUsDesktopVersion}>
         <ContactUs />
@@ -125,4 +130,4 @@ const Entertainment = () => {
   );
 };
 
-export default Entertainment;
+export default Security;

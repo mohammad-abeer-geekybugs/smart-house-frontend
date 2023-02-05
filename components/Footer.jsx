@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import { Divider, Grid, List, ListItem, ListItemText } from "@mui/material";
+import {
+  Button,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 import { MOBILE_MENU_BOT_TEXT, NAVLINKS } from "@/constants/Constants";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const styles = makeStyles((theme) => ({
   footerContainer: {
@@ -78,10 +86,40 @@ const styles = makeStyles((theme) => ({
       color: "white",
     },
   },
+  contactUsButtonDiv: {
+    backgroundColor: "black",
+    width: "100%",
+    margin: "auto",
+    textAlign: "center",
+    padding: "20px",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
+  contactUsButton: {
+    backgroundColor: "#f4cf09",
+    width: "280px",
+    color: "#333333",
+    borderRadius: "0px",
+    fontSize: "20px",
+    padding: "10px 0px",
+  },
+  links: {
+    "&:hover": {
+      color: "#f4cf09",
+      cursor: "pointer",
+    },
+  },
 }));
 
 const Footer = () => {
   const classes = styles();
+  const route = useRouter();
+
+  useEffect(() => {
+    console.log("route.pathname: ", route.pathname);
+  }, [route.pathname]);
+
   return (
     <div className={classes.footerContainer}>
       <Grid
@@ -105,7 +143,9 @@ const Footer = () => {
               <React.Fragment key={index}>
                 <ListItem disablePadding className={classes.secondGridListItem}>
                   <Link href={item.path}>
-                    <ListItemText primary={item.name} />
+                    <ListItemText className={classes.links}>
+                      {item.name}
+                    </ListItemText>
                   </Link>
                 </ListItem>
                 <Divider className={classes.divider} />
@@ -165,6 +205,13 @@ const Footer = () => {
           </List>
         </Grid>
       </Grid>
+      {route.pathname !== "/contact-us" && (
+        <div className={classes.contactUsButtonDiv}>
+          <Link href="/contact-us">
+            <Button className={classes.contactUsButton}>CONTACT US</Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

@@ -69,7 +69,8 @@ const styles = makeStyles((theme) => ({
     alignItems: "center",
   },
   secondSection: {
-    margin: "40px 0px",
+    padding: "40px 0px",
+    backgroundColor: "#fff",
   },
   introducingHouseSmartGrid: {
     position: "relative",
@@ -206,6 +207,11 @@ const styles = makeStyles((theme) => ({
     position: "absolute",
     top: 25,
   },
+  contactUsDesktopVersion: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
 }));
 const THIRD_SECTION_DATA = [
   {
@@ -333,7 +339,9 @@ const LandingPage = () => {
       </div>
 
       {/* Contact Us Section */}
-      <ContactUs />
+      <div className={classes.contactUsDesktopVersion}>
+        <ContactUs />
+      </div>
     </>
   );
 };

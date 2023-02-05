@@ -4,27 +4,25 @@ import React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RightToLeftAmenity from "@/components/RightToLeftAmenity";
 import {
-  BASIC_HOME_THEATRE,
-  CUSTOM_HOME_THEATRE,
-  CUSTOM_SPORTS_DEN,
-  GAMING_ROOM,
+  AUDIO_ROOM_CONFIGURATION,
+  WHOLE_HOME_AUDIO,
 } from "@/constants/Constants";
 import LeftToRightAmenity from "@/components/LeftToRightAmenity";
 import ContactUs from "@/components/ContactUs";
 const styles = makeStyles((theme) => ({
   container: {
-    backgroundImage: "url(/entertainmentBg.png)",
+    backgroundImage: "url(/audioBg.png)",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundColor: "black",
     [theme.breakpoints.down("md")]: {
       minHeight: "56vh",
-      backgroundImage: "url(/entertainmentTabletBg.png)",
+      backgroundImage: "url(/audioTabletBg.png)",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("600")]: {
       minHeight: "45vh",
-      backgroundImage: "url(/entertainmentMobileBg.png)",
+      backgroundImage: "url(/audioMobileBg.png)",
     },
   },
   mainBanner: {
@@ -94,15 +92,15 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const Entertainment = () => {
+const Audio = () => {
   const classes = styles();
   return (
     <>
       <div className={classes.container}>
         <div className={classes.mainBanner}>
-          <p className={classes.mainHeading}>01. ENTERTAINMENT</p>
+          <p className={classes.mainHeading}>02. AUDIO</p>
           <p className={classes.subHeading}>
-            Experience personalized, high-quality entertainment in your home
+            Elevate your listening experience with tailored audio solutions
           </p>
           <div className={classes.mainBannerYellowLineDiv}>
             <Image src="/yellowDullLine.png" width="400px" height="50px" />
@@ -113,10 +111,8 @@ const Entertainment = () => {
         </div>
       </div>
       <div>
-        <RightToLeftAmenity DATA={BASIC_HOME_THEATRE} />
-        <LeftToRightAmenity DATA={CUSTOM_HOME_THEATRE} />
-        <RightToLeftAmenity DATA={CUSTOM_SPORTS_DEN} />
-        <LeftToRightAmenity DATA={GAMING_ROOM} />
+        <RightToLeftAmenity DATA={WHOLE_HOME_AUDIO} />
+        <LeftToRightAmenity DATA={AUDIO_ROOM_CONFIGURATION} modifyGrid={true} />
       </div>
       <div className={classes.contactUsDesktopVersion}>
         <ContactUs />
@@ -125,4 +121,4 @@ const Entertainment = () => {
   );
 };
 
-export default Entertainment;
+export default Audio;

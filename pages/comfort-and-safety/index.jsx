@@ -5,26 +5,31 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RightToLeftAmenity from "@/components/RightToLeftAmenity";
 import {
   BASIC_HOME_THEATRE,
+  CARE_TECH_FOR_SENIORS,
   CUSTOM_HOME_THEATRE,
   CUSTOM_SPORTS_DEN,
+  ELECTRIC_CAR_CHARGER_INSTALL,
   GAMING_ROOM,
+  HOME_COMFORT_PACKAGE,
+  LIGHTING_AND_SHADES_AUTOMATION,
+  OUTDOOR_SPACE,
 } from "@/constants/Constants";
 import LeftToRightAmenity from "@/components/LeftToRightAmenity";
 import ContactUs from "@/components/ContactUs";
 const styles = makeStyles((theme) => ({
   container: {
-    backgroundImage: "url(/entertainmentBg.png)",
+    backgroundImage: "url(/comfortAndSafetyBg.png)",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundColor: "black",
     [theme.breakpoints.down("md")]: {
       minHeight: "56vh",
-      backgroundImage: "url(/entertainmentTabletBg.png)",
+      backgroundImage: "url(/comfortAndSafetyTabletBg.png)",
     },
     [theme.breakpoints.down("sm")]: {
       minHeight: "45vh",
-      backgroundImage: "url(/entertainmentMobileBg.png)",
+      backgroundImage: "url(/comfortAndSafetyMobileBg.png)",
     },
   },
   mainBanner: {
@@ -94,15 +99,15 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const Entertainment = () => {
+const ComfortAndSafety = () => {
   const classes = styles();
   return (
     <>
       <div className={classes.container}>
         <div className={classes.mainBanner}>
-          <p className={classes.mainHeading}>01. ENTERTAINMENT</p>
+          <p className={classes.mainHeading}>04. COMFORT & SAFETY</p>
           <p className={classes.subHeading}>
-            Experience personalized, high-quality entertainment in your home
+            Enjoy personalized comfort in your home with tailored solutions
           </p>
           <div className={classes.mainBannerYellowLineDiv}>
             <Image src="/yellowDullLine.png" width="400px" height="50px" />
@@ -113,10 +118,14 @@ const Entertainment = () => {
         </div>
       </div>
       <div>
-        <RightToLeftAmenity DATA={BASIC_HOME_THEATRE} />
-        <LeftToRightAmenity DATA={CUSTOM_HOME_THEATRE} />
-        <RightToLeftAmenity DATA={CUSTOM_SPORTS_DEN} />
-        <LeftToRightAmenity DATA={GAMING_ROOM} />
+        <RightToLeftAmenity DATA={HOME_COMFORT_PACKAGE} />
+        <LeftToRightAmenity
+          DATA={LIGHTING_AND_SHADES_AUTOMATION}
+          modifyGrid={true}
+        />
+        <RightToLeftAmenity DATA={OUTDOOR_SPACE} />
+        <LeftToRightAmenity DATA={CARE_TECH_FOR_SENIORS} modifyGrid={true} />
+        <RightToLeftAmenity DATA={ELECTRIC_CAR_CHARGER_INSTALL} />
       </div>
       <div className={classes.contactUsDesktopVersion}>
         <ContactUs />
@@ -125,4 +134,4 @@ const Entertainment = () => {
   );
 };
 
-export default Entertainment;
+export default ComfortAndSafety;
