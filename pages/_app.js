@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import createEmotionCache from "../utils/createEmotionCache";
 import theme from "../styles/theme/theme";
 import "../styles/globals.css";
-import Head from "next/head";
+// import Head from "next/head";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -17,7 +17,7 @@ const MyApp = (props) => {
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
-        <Head>
+        {/* <Head>
           <title>Smart Home</title>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +25,7 @@ const MyApp = (props) => {
             href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap"
             rel="stylesheet"
           />
-        </Head>
+        </Head> */}
         {/* ----- NavBar ----- */}
         <Navbar />
         {/* ----- Application ----- */}
