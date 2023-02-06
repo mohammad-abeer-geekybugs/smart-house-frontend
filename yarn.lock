@@ -307,11 +307,6 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.3.4.tgz#c787837d36fcad75d72ff8df6b57482027d64a47"
   integrity sha512-H/69Lc5Q02dq3o+dxxy5O/oNxFsZpdL6WREtOOtOM1B/weonIwDXkekr1KV5DPVPr12IHFPrMrcJQ6bgPMfn7A==
 
-"@next/font@^12.3.2":
-  version "12.3.2-canary.2"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-12.3.2-canary.2.tgz#b2161bcd49325554c366739f4cf5c932a6066c2d"
-  integrity sha512-l0tnVfXF8ioS9KUQ0KlVsqQNNd+LD24H/xCHe0kAsTuT34439IOyGRJxvcm5gSSxqRleuRuqwXFXfsCojJD9uQ==
-
 "@next/swc-android-arm-eabi@12.3.4":
   version "12.3.4"
   resolved "https://registry.yarnpkg.com/@next/swc-android-arm-eabi/-/swc-android-arm-eabi-12.3.4.tgz#fd1c2dafe92066c6120761c6a39d19e666dc5dd0"

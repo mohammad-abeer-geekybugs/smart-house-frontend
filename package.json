@@ -17,7 +17,6 @@
     "@mui/icons-material": "^5.2.4",
     "@mui/material": "^5.2.4",
     "@mui/styles": "^5.11.2",
-    "@next/font": "^12.3.2",
     "axios": "^1.2.4",
     "clsx": "^1.2.1",
     "formik": "^2.2.9",
