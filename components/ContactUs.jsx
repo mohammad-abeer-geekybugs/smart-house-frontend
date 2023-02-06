@@ -33,6 +33,7 @@ const styles = makeStyles((theme) => ({
   iconText: {
     fontSize: "14px",
     color: "#333333",
+    fontFamily: "Aldrich",
   },
   numberAndEmailContainer: {
     display: "flex",
@@ -201,7 +202,14 @@ const ContactUs = ({ contactUsPage }) => {
         >
           <div className={classes.formDiv}>
             <div style={{ position: "relative" }}>
-              <p style={{ fontSize: "42px", zIndex: 1, position: "relative" }}>
+              <p
+                style={{
+                  fontSize: "42px",
+                  zIndex: 1,
+                  position: "relative",
+                  fontFamily: "Aldrich",
+                }}
+              >
                 CONTACT US
               </p>
               <div className={classes.numberAndEmailContainer}>
@@ -233,7 +241,13 @@ const ContactUs = ({ contactUsPage }) => {
                 return (
                   <Form>
                     <Grid container style={{ margin: "50px 0px", gap: "10px" }}>
-                      <p>Or fill the form:</p>
+                      <p
+                        style={{
+                          fontFamily: "Aldrich",
+                        }}
+                      >
+                        Or fill the form:
+                      </p>
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CssTextField
                           onChange={(e) =>
@@ -310,6 +324,7 @@ const ContactUs = ({ contactUsPage }) => {
                             backgroundColor: "#f4cf09",
                             color: "#333333",
                             fontSize: "20px",
+                            fontFamily: "Aldrich",
                           }}
                         >
                           SUBMIT

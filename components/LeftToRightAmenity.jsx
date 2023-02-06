@@ -38,6 +38,7 @@ const styles = makeStyles((theme) => ({
     lineHeight: "72px",
     margin: "40px 0px",
     width: "240px",
+    fontFamily: "Aldrich",
     [theme.breakpoints.down("1050")]: {
       width: "150px",
       fontSize: "30px",

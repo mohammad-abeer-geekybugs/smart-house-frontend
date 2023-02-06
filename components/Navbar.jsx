@@ -45,6 +45,7 @@ const styles = makeStyles((theme) => ({
   },
   menuLinksText: {
     fontSize: "20px",
+    fontFamily: "aldrich",
   },
   navText: {
     width: "max-content",
@@ -55,6 +56,7 @@ const styles = makeStyles((theme) => ({
     borderRadius: "0px",
     float: "right",
     marginRight: "20%",
+    fontFamily: "aldrich",
     "&:hover": {
       fontWeight: "600",
       border: "2px solid #F4CF09",
@@ -88,7 +90,6 @@ const Navbar = () => {
     setWidthoffset(screen.width);
     setHeightOffset(screen.height);
   });
-  console.log("seightOffset: ", heightOffset);
   const mobileList = () => (
     <Box
       sx={{ width: widthOffset }}
@@ -142,12 +143,22 @@ const Navbar = () => {
         ))}
       </List>
       <div
-        style={{ /* marginTop: "80px" */ position: "absolute", bottom: "90px" }}
+        style={{
+          /* marginTop: "80px" */ position: "absolute",
+          bottom: "140px",
+        }}
       >
         {MOBILE_MENU_BOT_TEXT.map((item, index) => (
           <ListItem key={index}>
             <ListItemText>
-              <div style={{ display: "flex", gap: "10px", marginLeft: "20px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginLeft: "20px",
+                  fontFamily: "aldrich",
+                }}
+              >
                 {item.icon}
                 {item.text}
               </div>
@@ -174,12 +185,19 @@ const Navbar = () => {
           key={index}
         >
           <Link href={item.path}>
-            <span>{item.name}</span>
+            <span
+              style={{
+                fontFamily: "aldrich",
+              }}
+            >
+              {item.name}
+            </span>
           </Link>
         </div>
       ))}
     </Box>
   );
+
   const navBarBgImage = {
     backgroundColor: "black",
   };

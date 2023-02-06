@@ -45,6 +45,7 @@ const styles = makeStyles((theme) => ({
   hoursOfWork: {
     color: "#828282",
     paddingLeft: "0px",
+    fontFamily: "aldrich",
     [theme.breakpoints.down("md")]: {
       color: "#F4CF09",
       justifyContent: "center",
@@ -60,12 +61,14 @@ const styles = makeStyles((theme) => ({
   hoursOfWorkListItemsTitle: {
     flex: "1",
     color: "#828282",
+    fontFamily: "aldrich",
     [theme.breakpoints.down("md")]: {
       color: "white",
     },
   },
   contacts: {
     color: "#828282",
+    fontFamily: "aldrich",
     [theme.breakpoints.down("md")]: {
       color: "#F4CF09",
       justifyContent: "center",
@@ -79,6 +82,7 @@ const styles = makeStyles((theme) => ({
     margin: "8px 0px",
     gap: "10px",
     alignItems: "flex-start",
+    fontFamily: "aldrich",
   },
   contactsLogo: {
     color: "#828282",
@@ -103,8 +107,10 @@ const styles = makeStyles((theme) => ({
     borderRadius: "0px",
     fontSize: "20px",
     padding: "10px 0px",
+    fontFamily: "aldrich",
   },
   links: {
+    fontFamily: "aldrich",
     "&:hover": {
       color: "#f4cf09",
       cursor: "pointer",
@@ -144,7 +150,13 @@ const Footer = () => {
                 <ListItem disablePadding className={classes.secondGridListItem}>
                   <Link href={item.path}>
                     <ListItemText className={classes.links}>
-                      {item.name}
+                      <span
+                        style={{
+                          fontFamily: "aldrich",
+                        }}
+                      >
+                        {item.name}
+                      </span>
                     </ListItemText>
                   </Link>
                 </ListItem>
@@ -177,7 +189,11 @@ const Footer = () => {
                 <span className={classes.hoursOfWorkListItemsTitle}>
                   {item.title}
                 </span>
-                <span style={{ flex: "1", color: "#fff" }}>{item.value}</span>
+                <span
+                  style={{ flex: "2", color: "#fff", fontFamily: "aldrich" }}
+                >
+                  {item.value}
+                </span>
               </ListItem>
             ))}
           </List>
@@ -207,7 +223,9 @@ const Footer = () => {
                   className={classes.contactsListItems}
                 >
                   <span className={classes.contactsLogo}>{item.icon}</span>
-                  <span>{item.text}</span>
+                  <span style={{ color: "#fff", fontFamily: "aldrich" }}>
+                    {item.text}
+                  </span>
                 </ListItem>
               ))}
             </div>

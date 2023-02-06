@@ -36,7 +36,29 @@ export const MOBILE_MENU_BOT_TEXT = [
     text: "Serving Southern Ontario",
   },
 ];
-
+/* Landing Page */
+export const THIRD_SECTION_DATA = [
+  {
+    heading: "01. ENTERTAINMENT",
+    text: "Experience personalized, high-quality entertainment in your home",
+    path: "/entertainment",
+  },
+  {
+    heading: "02. AUDIO",
+    text: "Elevate your listening experience with tailored audio solutions",
+    path: "/audio",
+  },
+  {
+    heading: "03. SECURITY",
+    text: "Protect your home with a customizable, easy-to-use security solution",
+    path: "/security",
+  },
+  {
+    heading: "04. COMFORT & SAFETY",
+    text: "Enjoy personalized comfort in your home with tailored solutions",
+    path: "/comfort-and-safety",
+  },
+];
 /* Entertainment Page */
 export const BASIC_HOME_THEATRE = {
   title: "BASIC HOME THEATRE",
@@ -523,3 +545,13 @@ export const ELECTRIC_CAR_CHARGER_INSTALL = {
     },
   ],
 };
+/* Slider Carousal on landing page */
+export const TECHNOLOGY_WE_UTILIZE_IMAGES = [
+  { image: "/paradigmLogo.png" },
+  { image: "/sonyLogo.png" },
+  { image: "/epsonLogo.png" },
+  { image: "/nestLogo.png" },
+  { image: "/legrandLogo.png" },
+  { image: "/hunterDouglasLogo.png" },
+  { image: "/elanLogo.png" },
+];
