@@ -112,6 +112,9 @@ const styles = makeStyles((theme) => ({
     position: "absolute",
     top: "85px",
     left: "-40px",
+    [theme.breakpoints.up("1892")]: {
+      top: "40px",
+    },
     [theme.breakpoints.down("md")]: {
       top: "60px",
     },
