@@ -188,19 +188,29 @@ const styles = makeStyles((theme) => ({
     [theme.breakpoints.down("605")]: {
       fontSize: "28px",
     },
-    [theme.breakpoints.down("530")]: {
+    [theme.breakpoints.down("586")]: {
+      fontSize: "26px",
+    },
+    [theme.breakpoints.down("544")]: {
       fontSize: "24px",
       lineHeight: "60px",
     },
-    [theme.breakpoints.down("455")]: {
+    [theme.breakpoints.down("502")]: {
       fontSize: "22px",
+      lineHeight: "60px",
     },
-    [theme.breakpoints.down("415")]: {
-      fontSize: "18px",
+    [theme.breakpoints.down("462")]: {
+      fontSize: "20px",
+    },
+    [theme.breakpoints.down("419")]: {
+      fontSize: "16px",
       lineHeight: "50px",
     },
     [theme.breakpoints.down("350")]: {
-      fontSize: "16px",
+      fontSize: "15px",
+    },
+    [theme.breakpoints.down("315")]: {
+      fontSize: "14px",
     },
   },
   thirdSectionText: {
@@ -208,6 +218,9 @@ const styles = makeStyles((theme) => ({
     zIndex: 1,
     color: "white",
     fontSize: "16px",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "400px",
+    },
     [theme.breakpoints.down("455")]: {
       fontSize: "15px",
     },
@@ -223,7 +236,7 @@ const styles = makeStyles((theme) => ({
     gap: "6px",
     color: "#828282",
     position: "absolute",
-    top: "110px",
+    bottom: "0",
     right: "-50px",
     alignItems: "center",
     cursor: "pointer",
@@ -231,17 +244,22 @@ const styles = makeStyles((theme) => ({
       display: "none",
     },
     [theme.breakpoints.down("600")]: {
-      top: "90px",
+      bottom: "0",
       fontSize: "14px",
       lineHeight: "20px",
     },
     [theme.breakpoints.down("500")]: {
-      top: "80px",
+      bottom: "-12px",
       fontSize: "14px",
       lineHeight: "20px",
     },
     [theme.breakpoints.down("400")]: {
-      top: "70px",
+      bottom: "-12px",
+      fontSize: "14px",
+      lineHeight: "20px",
+    },
+    [theme.breakpoints.down("388")]: {
+      bottom: "-20px",
       fontSize: "14px",
       lineHeight: "20px",
     },
@@ -277,6 +295,9 @@ const styles = makeStyles((theme) => ({
   yellowDullImageDiv: {
     position: "absolute",
     top: 25,
+    [theme.breakpoints.down("419")]: {
+      top: "16px",
+    },
   },
   contactUsDesktopVersion: {
     [theme.breakpoints.down("sm")]: {

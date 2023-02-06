@@ -7,6 +7,7 @@ import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlin
 import Image from "next/image";
 import { MOBILE_MENU_BOT_TEXT } from "@/constants/Constants";
 import * as Yup from "yup";
+import { useRouter } from "next/router";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -173,6 +174,7 @@ const validateForm = Yup.object().shape({
 });
 const topMargin = { marginTop: "50px" };
 const ContactUs = ({ contactUsPage }) => {
+  const route = useRouter();
   const classes = styles();
   const [initialValues] = useState({
     userName: "",
@@ -181,6 +183,7 @@ const ContactUs = ({ contactUsPage }) => {
   });
   const handleSubmit = (values) => {
     console.log("values => ", values);
+    route.push("/thankyou");
   };
   return (
     <div className={classes.container}>

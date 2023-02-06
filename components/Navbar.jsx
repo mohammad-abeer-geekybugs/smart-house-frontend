@@ -255,7 +255,9 @@ const Navbar = () => {
       {/* Desktop View Menu */}
       <div
         className={classes.desktopMenu}
-        style={offset > 70 ? navBarBgImage : null}
+        style={
+          route.pathname === "/thankyou" || offset > 70 ? navBarBgImage : null
+        }
       >
         <div
           style={{
