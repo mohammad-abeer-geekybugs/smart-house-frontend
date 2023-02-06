@@ -7,6 +7,7 @@ import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlin
 import Image from "next/image";
 import { MOBILE_MENU_BOT_TEXT } from "@/constants/Constants";
 import * as Yup from "yup";
+import { useRouter } from "next/router";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -15,7 +16,6 @@ const styles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     padding: "10% 0px",
-    marginBottom: "50vh",
     [theme.breakpoints.up("525")]: {
       backgroundImage: "url(/contactUsBg.png)",
     },
@@ -34,6 +34,7 @@ const styles = makeStyles((theme) => ({
   iconText: {
     fontSize: "14px",
     color: "#333333",
+    fontFamily: "Aldrich",
   },
   numberAndEmailContainer: {
     display: "flex",
@@ -171,8 +172,9 @@ const validateForm = Yup.object().shape({
   phoneNumber: Yup.string().max(11, "Too Long!").required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
 });
-
-const ContactUs = () => {
+const topMargin = { marginTop: "50px" };
+const ContactUs = ({ contactUsPage }) => {
+  const route = useRouter();
   const classes = styles();
   const [initialValues] = useState({
     userName: "",
@@ -181,10 +183,15 @@ const ContactUs = () => {
   });
   const handleSubmit = (values) => {
     console.log("values => ", values);
+    route.push("/thankyou");
   };
   return (
     <div className={classes.container}>
-      <Grid container className={classes.gridContainer}>
+      <Grid
+        container
+        className={classes.gridContainer}
+        style={!!contactUsPage ? topMargin : null}
+      >
         <Grid item xs={0} sm={0} md={6} lg={6} className={classes.emptyGrid} />
 
         {/* Form grid */}
@@ -198,7 +205,14 @@ const ContactUs = () => {
         >
           <div className={classes.formDiv}>
             <div style={{ position: "relative" }}>
-              <p style={{ fontSize: "42px", zIndex: 1, position: "relative" }}>
+              <p
+                style={{
+                  fontSize: "42px",
+                  zIndex: 1,
+                  position: "relative",
+                  fontFamily: "Aldrich",
+                }}
+              >
                 CONTACT US
               </p>
               <div className={classes.numberAndEmailContainer}>
@@ -230,7 +244,13 @@ const ContactUs = () => {
                 return (
                   <Form>
                     <Grid container style={{ margin: "50px 0px", gap: "10px" }}>
-                      <p>Or fill the form:</p>
+                      <p
+                        style={{
+                          fontFamily: "Aldrich",
+                        }}
+                      >
+                        Or fill the form:
+                      </p>
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <CssTextField
                           onChange={(e) =>
@@ -307,6 +327,7 @@ const ContactUs = () => {
                             backgroundColor: "#f4cf09",
                             color: "#333333",
                             fontSize: "20px",
+                            fontFamily: "Aldrich",
                           }}
                         >
                           SUBMIT

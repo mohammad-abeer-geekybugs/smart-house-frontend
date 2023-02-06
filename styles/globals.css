@@ -85,15 +85,11 @@ body {
   overflow-x: hidden;
 }
 
-/* body {
+body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
+  background: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 a {
   color: inherit;
@@ -114,4 +110,21 @@ a {
 }
 .css-1te5oja-MuiInputBase-root-MuiFilledInput-root:before {
   border-bottom: none !important;
+}
+.css-1en19g0:before {
+  border-bottom: none !important;
+}
+.css-1en19g0:after {
+  border-bottom: 2px solid #f4cf09 !important;
+}
+.slick-track {
+  display: flex !important;
+}
+.slick-slide {
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
+}
+.slick-arrow {
+  display: none !important;
 }

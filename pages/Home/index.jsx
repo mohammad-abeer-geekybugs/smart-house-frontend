@@ -4,6 +4,13 @@ import React from "react";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { Grid } from "@mui/material";
 import ContactUs from "@/components/ContactUs";
+import { SliderCarousal } from "@/components/SliderCarousal";
+import {
+  TECHNOLOGY_WE_UTILIZE_IMAGES,
+  THIRD_SECTION_DATA,
+} from "@/constants/Constants";
+import EastIcon from "@mui/icons-material/East";
+import Link from "next/link";
 
 const styles = makeStyles((theme) => ({
   desktopViewMainBanner: {
@@ -37,6 +44,7 @@ const styles = makeStyles((theme) => ({
     width: "30%",
     paddingTop: "200px",
     paddingLeft: "100px",
+    fontFamily: "aldrich",
     [theme.breakpoints.up("550")]: {
       fontSize: "52px",
     },
@@ -69,7 +77,8 @@ const styles = makeStyles((theme) => ({
     alignItems: "center",
   },
   secondSection: {
-    margin: "40px 0px",
+    padding: "40px 0px",
+    backgroundColor: "#fff",
   },
   introducingHouseSmartGrid: {
     position: "relative",
@@ -83,7 +92,9 @@ const styles = makeStyles((theme) => ({
     maxWidth: "400px",
     marginLeft: "30px",
     marginBottom: "10px",
+    color: "black",
     fontSize: "42px",
+    fontFamily: "aldrich",
     [theme.breakpoints.down("550")]: {
       fontSize: "30px",
     },
@@ -94,6 +105,7 @@ const styles = makeStyles((theme) => ({
   introducingHouseSmartText: {
     maxWidth: "80%",
     marginLeft: "30px",
+    color: "black",
     lineHeight: "24px",
     [theme.breakpoints.down("550")]: {
       margin: "auto",
@@ -136,20 +148,36 @@ const styles = makeStyles((theme) => ({
     fontSize: "42px",
     color: "white",
     lineHeight: "72px",
+    fontFamily: "aldrich",
+    [theme.breakpoints.down("1800")]: {
+      fontSize: "40px",
+    },
     [theme.breakpoints.down("1600")]: {
       fontSize: "36px",
     },
     [theme.breakpoints.down("1500")]: {
-      fontSize: "30px",
+      fontSize: "28px",
+    },
+    [theme.breakpoints.down("1350")]: {
+      fontSize: "27px",
     },
     [theme.breakpoints.down("1250")]: {
-      fontSize: "28px",
+      fontSize: "26px",
+    },
+    [theme.breakpoints.down("1190")]: {
+      fontSize: "25px",
     },
     [theme.breakpoints.down("1060")]: {
       fontSize: "24px",
     },
+    [theme.breakpoints.down("1005")]: {
+      fontSize: "23px",
+    },
     [theme.breakpoints.down("960")]: {
       fontSize: "22px",
+    },
+    [theme.breakpoints.down("921")]: {
+      fontSize: "21px",
     },
     [theme.breakpoints.down("900")]: {
       fontSize: "36px",
@@ -160,19 +188,29 @@ const styles = makeStyles((theme) => ({
     [theme.breakpoints.down("605")]: {
       fontSize: "28px",
     },
-    [theme.breakpoints.down("530")]: {
+    [theme.breakpoints.down("586")]: {
+      fontSize: "26px",
+    },
+    [theme.breakpoints.down("544")]: {
       fontSize: "24px",
       lineHeight: "60px",
     },
-    [theme.breakpoints.down("455")]: {
+    [theme.breakpoints.down("502")]: {
       fontSize: "22px",
+      lineHeight: "60px",
     },
-    [theme.breakpoints.down("415")]: {
-      fontSize: "18px",
+    [theme.breakpoints.down("462")]: {
+      fontSize: "20px",
+    },
+    [theme.breakpoints.down("419")]: {
+      fontSize: "16px",
       lineHeight: "50px",
     },
     [theme.breakpoints.down("350")]: {
-      fontSize: "16px",
+      fontSize: "15px",
+    },
+    [theme.breakpoints.down("315")]: {
+      fontSize: "14px",
     },
   },
   thirdSectionText: {
@@ -180,6 +218,9 @@ const styles = makeStyles((theme) => ({
     zIndex: 1,
     color: "white",
     fontSize: "16px",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "400px",
+    },
     [theme.breakpoints.down("455")]: {
       fontSize: "15px",
     },
@@ -188,6 +229,55 @@ const styles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("350")]: {
       fontSize: "12px",
+    },
+  },
+  thirdSectionSeeMoreDiv: {
+    display: "flex",
+    gap: "6px",
+    color: "#828282",
+    position: "absolute",
+    bottom: "0",
+    right: "-50px",
+    alignItems: "center",
+    cursor: "pointer",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+    [theme.breakpoints.down("600")]: {
+      bottom: "0",
+      fontSize: "14px",
+      lineHeight: "20px",
+    },
+    [theme.breakpoints.down("500")]: {
+      bottom: "-12px",
+      fontSize: "14px",
+      lineHeight: "20px",
+    },
+    [theme.breakpoints.down("400")]: {
+      bottom: "-12px",
+      fontSize: "14px",
+      lineHeight: "20px",
+    },
+    [theme.breakpoints.down("388")]: {
+      bottom: "-20px",
+      fontSize: "14px",
+      lineHeight: "20px",
+    },
+  },
+  forthSection: {
+    backgroundColor: "#fff",
+    textAlign: "center",
+    padding: "60px 0px ",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
+  },
+  forthSectionTabletView: {
+    backgroundColor: "#fff",
+    textAlign: "center",
+    padding: "60px 0px ",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
   },
   gridItemDiv: {
@@ -205,26 +295,17 @@ const styles = makeStyles((theme) => ({
   yellowDullImageDiv: {
     position: "absolute",
     top: 25,
+    [theme.breakpoints.down("419")]: {
+      top: "16px",
+    },
+  },
+  contactUsDesktopVersion: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
 }));
-const THIRD_SECTION_DATA = [
-  {
-    heading: "01. ENTERTAINMENT",
-    text: "Experience personalized, high-quality entertainment in your home",
-  },
-  {
-    heading: "02. AUDIO",
-    text: "Elevate your listening experience with tailored audio solutions",
-  },
-  {
-    heading: "03. SECURITY",
-    text: "Protect your home with a customizable, easy-to-use security solution",
-  },
-  {
-    heading: "04. COMFORT & SAFETY",
-    text: "Enjoy personalized comfort in your home with tailored solutions",
-  },
-];
+
 const LandingPage = () => {
   const classes = styles();
   return (
@@ -300,7 +381,6 @@ const LandingPage = () => {
 
       <div className={classes.thirdSection}>
         <Grid container className={classes.thirdSectionGridContainer}>
-          {/* <Grid item xs={0} sm={0} md={1} lg={1} /> */}
           {THIRD_SECTION_DATA.map((item, index) => (
             <Grid
               item
@@ -314,6 +394,12 @@ const LandingPage = () => {
               <div className={classes.gridItemDiv}>
                 <p className={classes.thirdSectionHeadings}>{item.heading}</p>
                 <p className={classes.thirdSectionText}>{item.text}</p>
+                <Link href={item.path}>
+                  <div className={classes.thirdSectionSeeMoreDiv}>
+                    <p>See more</p>
+                    <EastIcon />
+                  </div>
+                </Link>
                 <div className={classes.yellowDullImageDiv}>
                   <Image
                     src={"/yellowDullLine.png"}
@@ -327,13 +413,54 @@ const LandingPage = () => {
         </Grid>
       </div>
 
+      {/* Technologies we utilize section */}
       <div className={classes.forthSection}>
-        <p>TECHNOLOGY WE UTILIZE</p>
-        {/* insert slider here */}
+        <p
+          style={{
+            fontSize: "42px",
+            lineHeight: "72px",
+            fontFamily: "aldrich",
+          }}
+        >
+          TECHNOLOGY WE UTILIZE
+        </p>
+        <div style={{ backgroundColor: "#F2F2F2", marginTop: "10px" }}>
+          <SliderCarousal DATA={TECHNOLOGY_WE_UTILIZE_IMAGES} />
+        </div>
+      </div>
+
+      <div className={classes.forthSectionTabletView}>
+        <p
+          style={{
+            fontSize: "32px",
+            lineHeight: "44px",
+            width: "230px",
+            margin: "auto",
+            fontFamily: "aldrich",
+          }}
+        >
+          TECHNOLOGY WE UTILIZE
+        </p>
+        <div style={{ backgroundColor: "#F2F2F2", marginTop: "10px" }}>
+          {TECHNOLOGY_WE_UTILIZE_IMAGES.map((item, index) => (
+            <div
+              key={index}
+              style={index === 4 ? { padding: "10px 0px" } : null}
+            >
+              <Image
+                src={item.image}
+                width={index === 4 ? "100px" : "110px"}
+                height={index === 4 ? "30px" : "70px"}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Contact Us Section */}
-      <ContactUs />
+      <div className={classes.contactUsDesktopVersion}>
+        <ContactUs />
+      </div>
     </>
   );
 };

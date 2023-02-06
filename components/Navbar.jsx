@@ -8,18 +8,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import ClearIcon from "@mui/icons-material/Clear";
-import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
-// import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-// import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
-// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import Link from "next/link";
 import clsx from "clsx";
 import { Divider } from "@mui/material";
 import { MOBILE_MENU_BOT_TEXT, NAVLINKS } from "@/constants/Constants";
+import { useRouter } from "next/router";
 
 const styles = makeStyles((theme) => ({
   navBarContainer: {
@@ -50,48 +45,55 @@ const styles = makeStyles((theme) => ({
   },
   menuLinksText: {
     fontSize: "20px",
+    fontFamily: "aldrich",
   },
   navText: {
     width: "max-content",
   },
   navButton: {
     color: "white",
-    borderColor: "#fff",
+    border: "2px solid #fff",
     borderRadius: "0px",
     float: "right",
     marginRight: "20%",
+    fontFamily: "aldrich",
     "&:hover": {
       fontWeight: "600",
+      border: "2px solid #F4CF09",
       color: "#F4CF09",
-      borderColor: "#F4CF09",
+      cursor: "pointer",
       transform: "translate(0px, -5px)",
       transition: "transform 0.5s ease-in-out",
     },
   },
+  navLinkItemDiv: {
+    padding: "20px 0px 10px",
+    margin: "0px 20px",
+    color: "White",
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
 }));
-// const MOBILE_MENU_BOT_TEXT = [
-//   {
-//     icon: <LocalPhoneOutlinedIcon />,
-//     text: "647-693-5688",
-//   },
-//   {
-//     icon: <AlternateEmailOutlinedIcon />,
-//     text: "info@housesmarts.io",
-//   },
-//   {
-//     icon: <LocationOnOutlinedIcon />,
-//     text: "Serving Southern Ontario",
-//   },
-// ];
+const activeLink = {
+  borderBottom: "2px solid #F4CF09",
+};
 const Navbar = () => {
-  const [offset, setOffset] = useState(0);
   const classes = styles();
+  const route = useRouter();
+  const [offset, setOffset] = useState(0);
+  const [widthOffset, setWidthoffset] = useState(0);
+  const [heightOffset, setHeightOffset] = useState(0);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
-  // console.log("offset: ", offset);
 
+  useEffect(() => {
+    setWidthoffset(screen.width);
+    setHeightOffset(screen.height);
+  });
   const mobileList = () => (
     <Box
-      sx={{ width: 330 }}
+      sx={{ width: widthOffset }}
+      minHeight={heightOffset}
       role="presentation"
       style={{
         backgroundColor: "black",
@@ -102,13 +104,10 @@ const Navbar = () => {
     >
       <List>
         <ListItem>
-          <ListItemIcon style={{ marginLeft: "20px" }}>
-            <Image
-              src={"/smallLogo.svg"}
-              width="40px"
-              height="40px"
-              //   style={{ marginLeft: "20px" }}
-            />
+          <ListItemIcon style={{ marginLeft: "20px", cursor: "pointer" }}>
+            <Link href="/">
+              <Image src={"/smallLogo.svg"} width="40px" height="40px" />
+            </Link>
           </ListItemIcon>
           <ListItemButton style={{ justifyContent: "right" }}>
             <ListItemIcon style={{ justifyContent: "inherit" }}>
@@ -124,33 +123,49 @@ const Navbar = () => {
             <ListItem disablePadding>
               <Link href={item.path}>
                 <ListItemButton>
-                  <ListItemText
-                    className={clsx(classes.menuLinks, "navText")}
-                    // primary={item.name}
-                  >
-                    <p className={clsx(classes.menuLinksText)}>{item.name}</p>
+                  <ListItemText className={clsx(classes.menuLinks, "navText")}>
+                    <p
+                      className={classes.menuLinksText}
+                      onClick={() => setOpenMobileMenu(false)}
+                    >
+                      {item.name}
+                    </p>
                   </ListItemText>
                 </ListItemButton>
               </Link>
             </ListItem>
-            <Divider color="yellow" width="20%" style={{ marginLeft: "13%" }} />
+            <Divider
+              color="yellow"
+              width="20%"
+              style={{ position: "absolute", left: "45px" }}
+            />
           </React.Fragment>
         ))}
-        <div style={{ marginTop: "80px" }}>
-          {MOBILE_MENU_BOT_TEXT.map((item, index) => (
-            <ListItem key={index}>
-              <ListItemText>
-                <div
-                  style={{ display: "flex", gap: "10px", marginLeft: "20px" }}
-                >
-                  {item.icon}
-                  {item.text}
-                </div>
-              </ListItemText>
-            </ListItem>
-          ))}
-        </div>
       </List>
+      <div
+        style={{
+          /* marginTop: "80px" */ position: "absolute",
+          bottom: "140px",
+        }}
+      >
+        {MOBILE_MENU_BOT_TEXT.map((item, index) => (
+          <ListItem key={index}>
+            <ListItemText>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginLeft: "20px",
+                  fontFamily: "aldrich",
+                }}
+              >
+                {item.icon}
+                {item.text}
+              </div>
+            </ListItemText>
+          </ListItem>
+        ))}
+      </div>
     </Box>
   );
   const desktopList = () => (
@@ -165,17 +180,24 @@ const Navbar = () => {
     >
       {NAVLINKS.map((item, index) => (
         <div
-          className={clsx(classes.navText, "navText")}
-          style={{ margin: "20px 20px", color: "White" }}
+          className={clsx(classes.navText, classes.navLinkItemDiv, "navText")}
+          style={route.pathname === item.path ? activeLink : null}
           key={index}
         >
-          <Link className={classes.linkHover} href={item.path}>
-            {item.name}
+          <Link href={item.path}>
+            <span
+              style={{
+                fontFamily: "aldrich",
+              }}
+            >
+              {item.name}
+            </span>
           </Link>
         </div>
       ))}
     </Box>
   );
+
   const navBarBgImage = {
     backgroundColor: "black",
   };
@@ -200,14 +222,16 @@ const Navbar = () => {
             padding: "10px 35px",
           }}
         >
-          <Image
-            src={"/smallLogo.svg"}
-            width="40px"
-            height="30px"
-            style={{
-              marginTop: "10px",
-            }}
-          />
+          <Link href="/">
+            <Image
+              src={"/smallLogo.svg"}
+              width="40px"
+              height="30px"
+              style={{
+                marginTop: "10px",
+              }}
+            />
+          </Link>
         </div>
         <div style={{ alignSelf: "center", padding: "10px 10px" }}>
           <Button
@@ -231,7 +255,9 @@ const Navbar = () => {
       {/* Desktop View Menu */}
       <div
         className={classes.desktopMenu}
-        style={offset > 70 ? navBarBgImage : null}
+        style={
+          route.pathname === "/thankyou" || offset > 70 ? navBarBgImage : null
+        }
       >
         <div
           style={{
@@ -241,28 +267,33 @@ const Navbar = () => {
           }}
         >
           <div style={{ flex: 1, display: "flex", marginLeft: "10%" }}>
-            <div
-              style={{
-                width: "max-content",
-                alignSelf: "center",
-                marginRight: "20px",
-              }}
-            >
-              <Image
-                src={"/mainLogo.svg"}
-                width="108px"
-                height="36px"
+            <Link href="/">
+              <div
                 style={{
-                  marginTop: "10px",
+                  width: "max-content",
+                  alignSelf: "center",
+                  marginRight: "20px",
+                  cursor: "pointer",
                 }}
-              />
-            </div>
+              >
+                <Image
+                  src={"/mainLogo.svg"}
+                  width="108px"
+                  height="36px"
+                  style={{
+                    marginTop: "10px",
+                  }}
+                />
+              </div>
+            </Link>
             {desktopList()}
           </div>
           <div style={{ flex: 1, alignSelf: "center" }}>
-            <Button variant="outlined" className={classes.navButton}>
-              Contact Us
-            </Button>
+            <Link href="/contact-us">
+              <Button variant="outlined" className={classes.navButton}>
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
