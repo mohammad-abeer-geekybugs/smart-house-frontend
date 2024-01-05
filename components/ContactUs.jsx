@@ -207,6 +207,7 @@ const ContactUs = ({ contactUsPage }) => {
             <div style={{ position: "relative" }}>
               <p
                 style={{
+                  color: "black",
                   fontSize: "42px",
                   zIndex: 1,
                   position: "relative",
